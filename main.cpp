@@ -4,17 +4,21 @@
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Window.hpp>
+#include <SFML/Window/ContextSettings.hpp>
 #include <SFML/Window/Event.hpp>
 #include <SFML/Window/Keyboard.hpp>
 #include <SFML/Window/Mouse.hpp>
+#include <SFML/Window/WindowStyle.hpp>
 
 int main()
 {
-    unsigned fps = 30;
+    unsigned fps = 60;
+    sf::ContextSettings ctx;
+    ctx.antialiasingLevel = 8;
     std::srand(std::time(nullptr));
-    sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!",sf::Style::Default,ctx);
     window.setFramerateLimit(fps);
-    ParticleSystem p1{1.0f, 30};
+    ParticleSystem p1{1.0f, 60};
 
     while (window.isOpen())
     {

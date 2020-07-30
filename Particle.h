@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Random.h"
+#include <SFML/Config.hpp>
 #include <SFML/Graphics/Color.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -46,6 +47,7 @@ struct particle
     sf::Vector2f beginSize{20.f, 20.f}, endSize{30.f, 30.f};
     sf::Color beginColor{255, 0, 0, 255}, endColor{0, 255, 0, 255};
     sf::Vector2i pos = {0, 0};
+    sf::Uint8 red, green, blue;
     unsigned alpha = 255, r{(unsigned)std::abs(endColor.r - beginColor.r)},
              g{(unsigned)std::abs(endColor.g - beginColor.g)}, b{(unsigned)std::abs(endColor.b - beginColor.b)};
 };
