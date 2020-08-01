@@ -18,7 +18,7 @@ int main()
     std::srand(std::time(nullptr));
     sf::RenderWindow window(sf::VideoMode(1000, 500), "SFML works!",sf::Style::Default,ctx);
     window.setFramerateLimit(fps);
-    ParticleSystem p1{1.0f, 60};
+    ParticleSystem p1{0.0f};
 
     while (window.isOpen())
     {

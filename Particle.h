@@ -35,10 +35,7 @@ struct particle
         else
             rect.rotate(-rotateFactor);
     }
-    sf::RectangleShape getRect() const
-    {
-        return rect;
-    }
+
     float rotateFactor = 6.f;
     sf::Vector2f scaleFactor = {1.03f, 1.03f}, dir{0.f, 0.f};
     sf::RectangleShape rect;
@@ -56,12 +53,13 @@ class ParticleSystem
 {
   public:
     ParticleSystem() = delete;
-    ParticleSystem(const float &&, const unsigned &&);
+    ParticleSystem(const float &&pLF);
+    ParticleSystem(const float &pLF);
     void OnParticleUpdate(const sf::Vector2i &, unsigned &);
     std::vector<sf::RectangleShape> &getParticles();
 
   private:
-    unsigned pCount = 2;
+    const unsigned pCount = 999;
     std::vector<particle> sprites;
     float particleLifeTime = 1.f;
 };

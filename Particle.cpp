@@ -5,10 +5,17 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
 
-ParticleSystem::ParticleSystem(const float &&pLF, const unsigned &&pool) : particleLifeTime(pLF), pCount(pool)
+ParticleSystem::ParticleSystem(const float &&pLF) : particleLifeTime(pLF)
 {
-    if (pCount <= 1)
-        pCount = 2;
+    if (particleLifeTime <= 0.f)
+        particleLifeTime = 1.f;
+    sprites.reserve(pCount);
+}
+
+ParticleSystem::ParticleSystem(const float &pLF) : particleLifeTime(pLF)
+{
+    if (particleLifeTime <= 0.f)
+        particleLifeTime = 1.f;
     sprites.reserve(pCount);
 }
 
@@ -21,7 +28,7 @@ void ParticleSystem::OnParticleUpdate(const sf::Vector2i &mousePos, unsigned &fp
     {
         if (sprites[i].clk.getElapsedTime() > sf::seconds(particleLifeTime))
             sprites.erase(sprites.begin() + i);
-        if (sprites[i].alpha < 4.f)
+        if (sprites[i].alpha < 15.f)
             sprites[i].alpha = 0.f;
         else
             sprites[i].alpha -= (float)255 / ((float)fps * particleLifeTime);
@@ -61,7 +68,8 @@ void ParticleSystem::OnParticleUpdate(const sf::Vector2i &mousePos, unsigned &fp
             sf::Color{sprites[i].red, sprites[i].green, sprites[i].blue, (sf::Uint8)sprites[i].alpha});
         sprites[i].translate();
         sprites[i].rotate();
-        if (sprites[i].rect.getSize() < sprites[i].endSize)
+        if ((sprites[i].rect.getSize().x < sprites[i].endSize.x) &&
+            (sprites[i].rect.getSize().y < sprites[i].endSize.y))
             sprites[i].scale();
     }
 }
@@ -72,6 +80,6 @@ std::vector<sf::RectangleShape> &ParticleSystem::getParticles()
     shapes.reserve(pCount);
     shapes.clear();
     for (auto &sp : sprites)
-        shapes.push_back(sp.getRect());
+        shapes.push_back(sp.rect);
     return shapes;
 }
