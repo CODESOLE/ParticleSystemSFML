@@ -26,13 +26,6 @@ void ParticleSystem::OnParticleUpdate(const sf::Vector2i &mousePos, unsigned &fp
         else
             sprites[i].alpha -= (float)255 / ((float)fps * particleLifeTime);
 
-        // if (sprites[i].beginColor.r < sprites[i].endColor.r)
-        //     sprites[i].r += (float)sprites[i].r / ((float)fps * particleLifeTime);
-        // else
-        //     sprites[i].r -= (float)sprites[i].r / ((float)fps * particleLifeTime);
-
-        // std::cout << (unsigned)sprites[0].rect.getFillColor().a << std::endl;
-
         if (sprites[i].beginColor.r < sprites[i].endColor.r)
         {
             sprites[i].red =
