@@ -1,2 +1,2 @@
 # ParticleSystemSFML
-My 2D Particle System written in C++ by using SFML
+My simple 2D Particle System written in C++ by using SFML
