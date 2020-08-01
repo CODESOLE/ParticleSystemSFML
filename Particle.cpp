@@ -22,8 +22,9 @@ ParticleSystem::ParticleSystem(const float &pLF) : particleLifeTime(pLF)
 void ParticleSystem::OnParticleUpdate(const sf::Vector2i &mousePos, unsigned &fps)
 {
     if (sprites.size() < pCount)
-        sprites.push_back(
-            particle{mousePos, {(Random::getRandFloat(1.f) - 0.5f) * 3.f, (Random::getRandFloat(1.f) - 0.5f) * 3.f}});
+        sprites.push_back(particle{
+            mousePos,
+            {(Random::getRandFloat(1.f) - 0.5f) * noisePower, (Random::getRandFloat(1.f) - 0.5f) * noisePower}});
     for (std::size_t i{0}; i < sprites.size(); ++i)
     {
         if (sprites[i].clk.getElapsedTime() > sf::seconds(particleLifeTime))
@@ -72,6 +73,26 @@ void ParticleSystem::OnParticleUpdate(const sf::Vector2i &mousePos, unsigned &fp
             (sprites[i].rect.getSize().y < sprites[i].endSize.y))
             sprites[i].scale();
     }
+}
+
+void ParticleSystem::setNoisePower(const float &&_noisePower)
+{
+    if (_noisePower <= 0.f)
+    {
+        noisePower = 1.f;
+        return;
+    }
+    noisePower = _noisePower;
+}
+
+void ParticleSystem::setParticalLifeTime(const float &&_pLF)
+{
+    if (_pLF <= 0.f)
+    {
+        particleLifeTime = 1.f;
+        return;
+    }
+    particleLifeTime = _pLF;
 }
 
 std::vector<sf::RectangleShape> &ParticleSystem::getParticles()
