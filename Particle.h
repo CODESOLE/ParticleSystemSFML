@@ -41,8 +41,8 @@ struct particle
     sf::RectangleShape rect;
     int rotSide = Random::getRandInt(2);
     sf::Clock clk;
-    sf::Vector2f beginSize{20.f, 20.f}, endSize{30.f, 30.f};
-    sf::Color beginColor{255, 0, 0, 255}, endColor{247, 231, 2, 255};
+    static sf::Vector2f beginSize, endSize;
+    static sf::Color beginColor, endColor;
     sf::Vector2i pos = {0, 0};
     sf::Uint8 red, green, blue;
     unsigned alpha = 255, r{(unsigned)std::abs(endColor.r - beginColor.r)},
@@ -57,6 +57,8 @@ class ParticleSystem
     ParticleSystem(const float &pLF);
     void OnParticleUpdate(const sf::Vector2i &, unsigned &);
     void setNoisePower(const float &&);
+    void setBeginEndColor(sf::Color &&, sf::Color &&);
+    void setBeginEndSize(sf::Vector2f &&, sf::Vector2f &&);
     void setParticalLifeTime(const float &&);
     std::vector<sf::RectangleShape> &getParticles();
 

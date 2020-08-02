@@ -5,6 +5,11 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/System/Vector2.hpp>
 
+sf::Color particle::beginColor{255, 0, 0, 255};
+sf::Color particle::endColor{0, 0, 255, 255};
+sf::Vector2f particle::beginSize{20.f, 20.f};
+sf::Vector2f particle::endSize{30.f, 30.f};
+
 ParticleSystem::ParticleSystem(const float &&pLF) : particleLifeTime(pLF)
 {
     if (particleLifeTime <= 0.f)
@@ -83,6 +88,18 @@ void ParticleSystem::setNoisePower(const float &&_noisePower)
         return;
     }
     noisePower = _noisePower;
+}
+
+void ParticleSystem::setBeginEndColor(sf::Color &&begin, sf::Color &&end)
+{
+    particle::beginColor = begin;
+    particle::endColor = end;
+}
+
+void ParticleSystem::setBeginEndSize(sf::Vector2f &&begin, sf::Vector2f &&end)
+{
+    particle::beginSize = begin;
+    particle::endSize = end;
 }
 
 void ParticleSystem::setParticalLifeTime(const float &&_pLF)
