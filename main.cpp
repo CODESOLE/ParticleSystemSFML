@@ -60,8 +60,8 @@ int main()
         p1.OnParticleUpdate(sf::Mouse::getPosition(window), fps);
 
         ImGui::Begin("Particle System Control Panel");
-        ImGui::SliderFloat("Noise Multiplier: ", &noise, 1.f, 5.f, "%.3f", 1.0f);
-        ImGui::SliderFloat("Particle Life Time: ", &pLT, 0.2f, 5.f, "%.3f", 0.1f);
+        ImGui::SliderFloat("Noise Multiplier: ", &noise, 1.f, 5.f, "%.2f", 1.0f);
+        ImGui::SliderFloat("Particle Life Time: ", &pLT, 0.2f, 3.f, "%.2f", 0.5f);
         ImGui::SliderInt3("Begin Color: ", &bc[0], 0, 255);
         ImGui::SliderInt3("End Color: ", &ec[0], 0, 255);
         ImGui::End();

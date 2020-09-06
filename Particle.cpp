@@ -92,14 +92,14 @@ void ParticleSystem::setNoisePower(const float &&_noisePower)
 
 void ParticleSystem::setBeginEndColor(sf::Color &&begin, sf::Color &&end)
 {
-    particle::beginColor = begin;
-    particle::endColor = end;
+    particle::beginColor = std::move(begin);
+    particle::endColor = std::move(end);
 }
 
 void ParticleSystem::setBeginEndSize(sf::Vector2f &&begin, sf::Vector2f &&end)
 {
-    particle::beginSize = begin;
-    particle::endSize = end;
+    particle::beginSize = std::move(begin);
+    particle::endSize = std::move(end);
 }
 
 void ParticleSystem::setParticalLifeTime(const float &&_pLF)
@@ -109,7 +109,7 @@ void ParticleSystem::setParticalLifeTime(const float &&_pLF)
         particleLifeTime = 1.f;
         return;
     }
-    particleLifeTime = _pLF;
+    particleLifeTime = std::move(_pLF);
 }
 
 std::vector<sf::RectangleShape> &ParticleSystem::getParticles()
