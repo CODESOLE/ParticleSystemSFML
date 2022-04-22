@@ -56,10 +56,10 @@ class ParticleSystem
     ParticleSystem(const float &&pLF);
     ParticleSystem(const float &pLF);
     void OnParticleUpdate(const sf::Vector2i &, unsigned &);
-    void setNoisePower(const float &&);
-    void setBeginEndColor(sf::Color &&, sf::Color &&);
+    void setNoisePower(const float);
+    void setBeginEndColor(sf::Color, sf::Color);
     void setBeginEndSize(sf::Vector2f &&, sf::Vector2f &&);
-    void setParticalLifeTime(const float &&);
+    void setParticalLifeTime(const float);
     std::vector<sf::RectangleShape> &getParticles();
 
   private:

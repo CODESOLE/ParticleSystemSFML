@@ -52,9 +52,9 @@ int main()
         }
         ImGui::SFML::Update(window, deltaClock.restart());
 
-        p1.setNoisePower(std::move(noise));
-        p1.setParticalLifeTime(std::move(pLT));
-        p1.setBeginEndColor(std::move(beginC), std::move(endC));
+        p1.setNoisePower(noise);
+        p1.setParticalLifeTime(pLT);
+        p1.setBeginEndColor(beginC, endC);
         p1.setBeginEndSize(sf::Vector2f{10.f, 10.f}, sf::Vector2f{20.f, 20.f});
 
         p1.OnParticleUpdate(sf::Mouse::getPosition(window), fps);
